@@ -1,4 +1,11 @@
-// console.log('hello dummy from tic tac toe!');
+// console.log('hello from tic tac toe!');
 
-td.addEventListener('click', alert('hello'));
+//need to add event listener to each square
+
+var squares = document.getElementsByClassName('square');
+// console.log(squares);
+
+for (var i = 0; i < squares.length; i++) {
+  squares[i].addEventListener('click', alert('hi'));
+}
 
