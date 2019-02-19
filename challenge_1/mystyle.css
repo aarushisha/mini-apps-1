@@ -10,3 +10,7 @@ td {
 td {
   border: 5px solid black;
 }
+
+.winner {
+  color: blue;
+}
