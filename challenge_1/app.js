@@ -5,6 +5,15 @@
 var squares = document.getElementsByClassName('square');
 // console.log(squares);
 
+var reset = document.getElementsByClassName('reset');
+
+reset[0].addEventListener('click', (event) => {
+  for (var i = 0; i < squares.length; i++) {
+    squares[i].textContent = '';
+  }
+})
+
+
 for (var i = 0; i < squares.length; i++) {
   squares[i].addEventListener('click', (event) => {
     addPlay(event);
@@ -16,7 +25,7 @@ for (var i = 0; i < squares.length; i++) {
 var count = 0;
 var addPlay = function(event) {
   if (event.target.innerHTML !== "") {
-    alert('play cannot be made because the square is not empty');
+    alert('Please select an empty square!');
   } else if (count % 2 === 0) {
     event.target.innerHTML = 'X';
     count++;
@@ -24,4 +33,16 @@ var addPlay = function(event) {
     event.target.innerHTML = 'O';
     count++;     
   }
+}
+
+var checkForHorizontalWin = function() {
+
+}
+
+var checkForVerticallWin = function() {
+  
+}
+
+var checkForDiagonalWin = function() {
+  
 }
