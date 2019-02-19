@@ -7,14 +7,21 @@ var squares = document.getElementsByClassName('square');
 
 for (var i = 0; i < squares.length; i++) {
   squares[i].addEventListener('click', (event) => {
-    addX(event);
+    addPlay(event);
   });
 }
 
-var addX = function(event) {
+//how to track who made the last move? 
+
+var count = 0;
+var addPlay = function(event) {
   if (event.target.innerHTML !== "") {
-    console.log('play cannot be made because the square is not empty');
-  } else {
+    alert('play cannot be made because the square is not empty');
+  } else if (count % 2 === 0) {
     event.target.innerHTML = 'X';
+    count++;
+  } else {
+    event.target.innerHTML = 'O';
+    count++;     
   }
 }
