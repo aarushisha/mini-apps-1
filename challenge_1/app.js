@@ -64,141 +64,78 @@ var addPlay = function(event) {
   }
 }
 
+var winForX = function() {
+  win = true;
+  alert("Player X has won the game! Select Reset Game to play again!");
+  winner[0].textContent = 'Player X Wins!';
+  xWins++;
+  xWin[0].textContent = xWins;
+  oWin[0].textContent = oWins;
+}
+
+var winForO = function() {
+  win = true;
+  alert("Player O has won the game! Select Reset Game to play again!");
+  winner[0].textContent = 'Player O Wins!';
+  oWins++;
+  xWin[0].textContent = xWins;
+  oWin[0].textContent = oWins;
+}
 
 var checkForHorizontalWin = function() {
   if (squares[0].textContent === 'X' && squares[1].textContent === 'X' && squares[2].textContent === 'X') {
-    win = true;
-    alert("Player X has won the game! Select Reset Game to play again!");
-    winner[0].textContent = 'Player X Wins!';
-    xWins++;
-    xWin[0].textContent = xWins;
-    oWin[0].textContent = oWins;
+    winForX();
   }
   if (squares[0].textContent === 'O' && squares[1].textContent === 'O' && squares[2].textContent === 'O') {
-    win = true;
-    alert("Player O has won the game! Select Reset Game to play again!");
-    winner[0].textContent = 'Player O Wins!';
-    oWins++;
-    xWin[0].textContent = xWins;
-    oWin[0].textContent = oWins;
+    winForO();
   }
   if (squares[3].textContent === 'X' && squares[4].textContent === 'X' && squares[5].textContent === 'X') {
-    win = true;
-    alert("Player X has won the game! Select Reset Game to play again!");
-    winner[0].textContent = 'Player X Wins!';
-    xWins++;
-    xWin[0].textContent = xWins;
-    oWin[0].textContent = oWins;
+    winForX();
   }
   if (squares[3].textContent === 'O' && squares[4].textContent === 'O' && squares[5].textContent === 'O') {
-    win = true;
-    alert("Player O has won the game! Select Reset Game to play again!");
-    winner[0].textContent = 'Player O Wins!';
-    oWins++;
-    xWin[0].textContent = xWins;
-    oWin[0].textContent = oWins;
+    winForO();
   }
   if (squares[6].textContent === 'X' && squares[7].textContent === 'X' && squares[8].textContent === 'X') {
-    win = true;
-    alert("Player X has won the game! Select Reset Game to play again!");
-    winner[0].textContent = 'Player X Wins!';
-    xWins++;
-    xWin[0].textContent = xWins;
-    oWin[0].textContent = oWins;
+    winForX();
   }
   if (squares[6].textContent === 'O' && squares[7].textContent === 'O' && squares[8].textContent === 'O') {
-    win = true;
-    alert("Player O has won the game! Select Reset Game to play again!");
-    winner[0].textContent = 'Player O Wins!';
-    oWins++;
-    xWin[0].textContent = xWins;
-    oWin[0].textContent = oWins;
+    winForO();
   }
 }
 
 var checkForVerticallWin = function() {
   if (squares[0].textContent === 'X' && squares[3].textContent === 'X' && squares[6].textContent === 'X') {
-    win = true;
-    alert("Player X has won the game! Select Reset Game to play again!");
-    winner[0].textContent = 'Player X Wins!';
-    xWins++;
-    xWin[0].textContent = xWins;
-    oWin[0].textContent = oWins;
+    winForX();
   }
   if (squares[0].textContent === 'O' && squares[3].textContent === 'O' && squares[6].textContent === 'O') {
-    win = true;
-    alert("Player O has won the game! Select Reset Game to play again!");
-    winner[0].textContent = 'Player O Wins!';
-    oWins++;
-    xWin[0].textContent = xWins;
-    oWin[0].textContent = oWins;
+    winForO();
   }
   if (squares[1].textContent === 'X' && squares[4].textContent === 'X' && squares[7].textContent === 'X') {
-    win = true;
-    alert("Player X has won the game! Select Reset Game to play again!");
-    winner[0].textContent = 'Player X Wins!';
-    xWins++;
-    xWin[0].textContent = xWins;
-    oWin[0].textContent = oWins;
+    winForX();
   }
   if (squares[1].textContent === 'O' && squares[4].textContent === 'O' && squares[7].textContent === 'O') {
-    win = true;
-    alert("Player O has won the game! Select Reset Game to play again!");
-    winner[0].textContent = 'Player O Wins!';
-    oWins++;
-    xWin[0].textContent = xWins;
-    oWin[0].textContent = oWins;
+    winForO();
   }
   if (squares[2].textContent === 'X' && squares[5].textContent === 'X' && squares[8].textContent === 'X') {
-    win = true;
-    alert("Player X has won the game! Select Reset Game to play again!");
-    winner[0].textContent = 'Player X Wins!';
-    xWins++;
-    xWin[0].textContent = xWins;
-    oWin[0].textContent = oWins;
+    winForX();
   }
   if (squares[2].textContent === 'O' && squares[5].textContent === 'O' && squares[8].textContent === 'O') {
-    win = true;
-    alert("Player O has won the game! Select Reset Game to play again!");
-    winner[0].textContent = 'Player O Wins!';
-    oWins++;
-    xWin[0].textContent = xWins;
-    oWin[0].textContent = oWins;
+    winForO();
   }
 }
 
 var checkForDiagonalWin = function() {
   if (squares[0].textContent === 'X' && squares[4].textContent === 'X' && squares[8].textContent === 'X') {
-    win = true;
-    alert("Player X has won the game! Select Reset Game to play again!");
-    winner[0].textContent = 'Player X Wins!';
-    xWins++;
-    xWin[0].textContent = xWins;
-    oWin[0].textContent = oWins;
+    winForX();
   }
   if (squares[0].textContent === 'O' && squares[4].textContent === 'O' && squares[8].textContent === 'O') {
-    win = true;
-    alert("Player 0 has won the game! Select Reset Game to play again!");
-    winner[0].textContent = 'Player O Wins!';
-    oWins++;
-    xWin[0].textContent = xWins;
-    oWin[0].textContent = oWins;
+    winForO();
   }
   if (squares[2].textContent === 'X' && squares[4].textContent === 'X' && squares[6].textContent === 'X') {
-    win = true;
-    alert("Player X has won the game! Select Reset Game to play again!");
-    winner[0].textContent = 'Player X Wins!';
-    xWins++;
-    xWin[0].textContent = xWins;
-    oWin[0].textContent = oWins;
+    winForX();
   }
   if (squares[2].textContent === 'O' && squares[4].textContent === 'O' && squares[6].textContent === 'O') {
-    win = true;
-    alert("Player 0 has won the game! Select Reset Game to play again!");
-    winner[0].textContent = 'Player O Wins!';
-    oWins++;
-    xWin[0].textContent = xWins;
-    oWin[0].textContent = oWins;
+    winForO();
   }
 }
 
