@@ -1,7 +1,5 @@
 
 
-//need to add event listener to each square
-
 var squares = document.getElementsByClassName('square');
 
 
