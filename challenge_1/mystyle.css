@@ -14,3 +14,11 @@ td {
 .winner {
   color: blue;
 }
+
+.x-wins {
+  font-weight: bolder;
+}
+
+.o-wins {
+  font-weight: bolder;
+}
