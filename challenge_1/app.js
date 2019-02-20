@@ -1,12 +1,20 @@
-// console.log('hello from tic tac toe!');
+
 
 //need to add event listener to each square
 
 var squares = document.getElementsByClassName('square');
-console.log(squares);
+
 
 var reset = document.getElementsByClassName('reset');
 var count = 0;
+var xWins = 0;
+var oWins = 0;
+
+var xWin = document.getElementsByClassName('x-wins');
+var oWin = document.getElementsByClassName('o-wins');
+
+xWin[0].textContent = xWins;
+oWin[0].textContent = oWins;
 
 var player  = document.getElementsByClassName('player');
 player[0].textContent = 'X';
@@ -14,12 +22,14 @@ player[0].textContent = 'X';
 var winner = document.getElementsByClassName('winner');
 
 
+var win = false; 
 reset[0].addEventListener('click', (event) => {
   for (var i = 0; i < squares.length; i++) {
     squares[i].textContent = '';
     count = 0;
     player[0].textContent = 'X';
     winner[0].textContent  = '';
+    win = false;
   }
 })
 
@@ -54,39 +64,56 @@ var addPlay = function(event) {
   }
 }
 
-var win = false; 
+
 var checkForHorizontalWin = function() {
   if (squares[0].textContent === 'X' && squares[1].textContent === 'X' && squares[2].textContent === 'X') {
     win = true;
     alert("Player X has won the game! Select Reset Game to play again!");
     winner[0].textContent = 'Player X Wins!';
+    xWins++;
+    xWin[0].textContent = xWins;
+oWin[0].textContent = oWins;
   }
   if (squares[0].textContent === 'O' && squares[1].textContent === 'O' && squares[2].textContent === 'O') {
     win = true;
     alert("Player O has won the game! Select Reset Game to play again!");
     winner[0].textContent = 'Player O Wins!';
+    oWins++;
+    xWin[0].textContent = xWins;
+oWin[0].textContent = oWins;
   }
   if (squares[3].textContent === 'X' && squares[4].textContent === 'X' && squares[5].textContent === 'X') {
     win = true;
     alert("Player X has won the game! Select Reset Game to play again!");
     winner[0].textContent = 'Player X Wins!';
+    xWins++;
+    xWin[0].textContent = xWins;
+oWin[0].textContent = oWins;
   }
   if (squares[3].textContent === 'O' && squares[4].textContent === 'O' && squares[5].textContent === 'O') {
     win = true;
     alert("Player O has won the game! Select Reset Game to play again!");
     winner[0].textContent = 'Player O Wins!';
+    oWins++;
+    xWin[0].textContent = xWins;
+oWin[0].textContent = oWins;
   }
   if (squares[6].textContent === 'X' && squares[7].textContent === 'X' && squares[8].textContent === 'X') {
     win = true;
     alert("Player X has won the game! Select Reset Game to play again!");
     winner[0].textContent = 'Player X Wins!';
+    xWins++;
+    xWin[0].textContent = xWins;
+oWin[0].textContent = oWins;
   }
   if (squares[6].textContent === 'O' && squares[7].textContent === 'O' && squares[8].textContent === 'O') {
     win = true;
     alert("Player O has won the game! Select Reset Game to play again!");
     winner[0].textContent = 'Player O Wins!';
+    oWins++;
+    xWin[0].textContent = xWins;
+oWin[0].textContent = oWins;
   }
-
 }
 
 var checkForVerticallWin = function() {
@@ -94,33 +121,50 @@ var checkForVerticallWin = function() {
     win = true;
     alert("Player X has won the game! Select Reset Game to play again!");
     winner[0].textContent = 'Player X Wins!';
+    xWins++;
+    xWin[0].textContent = xWins;
+oWin[0].textContent = oWins;
   }
   if (squares[0].textContent === 'O' && squares[3].textContent === 'O' && squares[6].textContent === 'O') {
     win = true;
     alert("Player O has won the game! Select Reset Game to play again!");
     winner[0].textContent = 'Player O Wins!';
+    oWins++;
+    xWin[0].textContent = xWins;
+oWin[0].textContent = oWins;
   }
   if (squares[1].textContent === 'X' && squares[4].textContent === 'X' && squares[7].textContent === 'X') {
     win = true;
     alert("Player X has won the game! Select Reset Game to play again!");
     winner[0].textContent = 'Player X Wins!';
+    xWins++;
+    xWin[0].textContent = xWins;
+oWin[0].textContent = oWins;
   }
   if (squares[1].textContent === 'O' && squares[4].textContent === 'O' && squares[7].textContent === 'O') {
     win = true;
     alert("Player O has won the game! Select Reset Game to play again!");
     winner[0].textContent = 'Player O Wins!';
+    oWins++;
+    xWin[0].textContent = xWins;
+oWin[0].textContent = oWins;
   }
   if (squares[2].textContent === 'X' && squares[5].textContent === 'X' && squares[8].textContent === 'X') {
     win = true;
     alert("Player X has won the game! Select Reset Game to play again!");
     winner[0].textContent = 'Player X Wins!';
+    xWins++;
+    xWin[0].textContent = xWins;
+oWin[0].textContent = oWins;
   }
   if (squares[2].textContent === 'O' && squares[5].textContent === 'O' && squares[8].textContent === 'O') {
     win = true;
     alert("Player O has won the game! Select Reset Game to play again!");
     winner[0].textContent = 'Player O Wins!';
+    oWins++;
+    xWin[0].textContent = xWins;
+oWin[0].textContent = oWins;
   }
-  
 }
 
 var checkForDiagonalWin = function() {
@@ -128,23 +172,34 @@ var checkForDiagonalWin = function() {
     win = true;
     alert("Player X has won the game! Select Reset Game to play again!");
     winner[0].textContent = 'Player X Wins!';
+    xWins++;
+    xWin[0].textContent = xWins;
+oWin[0].textContent = oWins;
   }
   if (squares[0].textContent === 'O' && squares[4].textContent === 'O' && squares[8].textContent === 'O') {
     win = true;
     alert("Player 0 has won the game! Select Reset Game to play again!");
     winner[0].textContent = 'Player O Wins!';
+    oWins++;
+    xWin[0].textContent = xWins;
+oWin[0].textContent = oWins;
   }
   if (squares[2].textContent === 'X' && squares[4].textContent === 'X' && squares[6].textContent === 'X') {
     win = true;
     alert("Player X has won the game! Select Reset Game to play again!");
     winner[0].textContent = 'Player X Wins!';
+    xWins++;
+    xWin[0].textContent = xWins;
+oWin[0].textContent = oWins;
   }
   if (squares[2].textContent === 'O' && squares[4].textContent === 'O' && squares[6].textContent === 'O') {
     win = true;
     alert("Player 0 has won the game! Select Reset Game to play again!");
     winner[0].textContent = 'Player O Wins!';
+    oWins++;
+    xWin[0].textContent = xWins;
+    oWin[0].textContent = oWins;
   }
-  
 }
 
 var checkAllSquaresFull = function() {
@@ -154,9 +209,10 @@ var checkAllSquaresFull = function() {
       fullSquares++;
     }
   }
-  if (fullSquares === 9 &&  win === false) {
-    //only want to alert if no other alert is on the page
-    alert('Tie Game! Select Reset Game to play again!');
+  if (fullSquares === 9) {
+    if(win !== true) {
+      alert('Tie Game! Select Reset Game to play again!');
+      winner[0].textContent = 'Tie Game!';
+    }
   }
-
 }
