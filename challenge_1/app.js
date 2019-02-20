@@ -24,11 +24,11 @@ var win = false;
 reset[0].addEventListener('click', (event) => {
   for (var i = 0; i < squares.length; i++) {
     squares[i].textContent = '';
-    count = 0;
-    player[0].textContent = 'X';
-    winner[0].textContent  = '';
-    win = false;
   }
+  count = 0;
+  player[0].textContent = 'X';
+  winner[0].textContent  = '';
+  win = false;
 })
 
 
@@ -47,21 +47,23 @@ var addPlay = function(event) {
     event.target.innerHTML = 'X';
     count++;
     player[0].textContent = 'O';
-    checkForHorizontalWin();
-    checkForVerticallWin();
-    checkForDiagonalWin();
-    checkAllSquaresFull();
+    checkBoard();
   } else {
     event.target.innerHTML = 'O';
     count++; 
     player[0].textContent = 'X';
-    checkForHorizontalWin();  
-    checkForVerticallWin();
-    checkForDiagonalWin();
-    checkAllSquaresFull();  
+    checkBoard(); 
   }
 }
 
+var checkBoard = function() {
+  checkForHorizontalWin();  
+  checkForVerticallWin();
+  checkForDiagonalWin();
+  checkAllSquaresFull();  
+}
+
+//pass in winner
 var winForX = function() {
   win = true;
   alert("Player X has won the game! Select Reset Game to play again!");
@@ -137,14 +139,9 @@ var checkForDiagonalWin = function() {
   }
 }
 
+
 var checkAllSquaresFull = function() {
-  var fullSquares = 0;
-  for (var i = 0; i < squares.length; i++) {
-    if (squares[i].textContent !== '') {
-      fullSquares++;
-    }
-  }
-  if (fullSquares === 9) {
+  if (count === 9) {
     if(win !== true) {
       alert('Tie Game! Select Reset Game to play again!');
       winner[0].textContent = 'Tie Game!';
