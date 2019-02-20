@@ -1,8 +1,5 @@
 
-
 var squares = document.getElementsByClassName('square');
-
-
 var reset = document.getElementsByClassName('reset');
 var count = 0;
 var xWins = 0;
@@ -22,6 +19,11 @@ var winner = document.getElementsByClassName('winner');
 
 var win = false; 
 reset[0].addEventListener('click', (event) => {
+  resetBoard(event);
+
+})
+
+var resetBoard = function(event) {
   for (var i = 0; i < squares.length; i++) {
     squares[i].textContent = '';
   }
@@ -29,7 +31,7 @@ reset[0].addEventListener('click', (event) => {
   player[0].textContent = 'X';
   winner[0].textContent  = '';
   win = false;
-})
+}
 
 
 for (var i = 0; i < squares.length; i++) {
