@@ -66,6 +66,23 @@ var checkBoard = function() {
 }
 
 //pass in winner
+
+// var winningPlay = function(team) {
+//   win = true;
+//   if (team === 'X') {
+//     alert("Player X has won the game! Select Reset Game to play again!");
+//     winner[0].textContent = 'Player X Wins!';
+//     xWins++;
+//     xWin[0].textContent = xWins;
+//     oWin[0].textContent = oWins;
+//   } else if (team === 'O') {
+//     alert("Player O has won the game! Select Reset Game to play again!");
+//     winner[0].textContent = 'Player O Wins!';
+//     oWins++;
+//     xWin[0].textContent = xWins;
+//     oWin[0].textContent = oWins;
+//   }
+// }
 var winForX = function() {
   win = true;
   alert("Player X has won the game! Select Reset Game to play again!");
