@@ -8,9 +8,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(Converter); //middleware to convert json to csv? 
 app.use(express.static('client'));
 
+
+app.get('/', function(req, res) {
+  res.render('/client/index.html');
+})
+
+
 app.post('/', function(req, res) {
   console.log("Hi!");
-  res.send("Hello World!");
+  console.log('req----------------------------------------------', req);
+  res.send(req.body);
 
 })
+
+app.listen(3000);
 
