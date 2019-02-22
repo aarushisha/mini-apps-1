@@ -12,34 +12,34 @@ You may also assume that child records in the JSON will always be in a property 
 
 
 
-var converter = (req, res, next) => {
-  // console.log('req.body in converter-----------------------', req.body);
-  //take the req.body object and iterate over keys, make them headers
-  //iterate over values to make..values?
-  // res.download('file.csv');
-  var str = '';
-  for (var key in req.body) {
-    str += key + ',';
-  }
+// var converter = (req, res, next) => {
+//   // console.log('req.body in converter-----------------------', req.body);
+//   //take the req.body object and iterate over keys, make them headers
+//   //iterate over values to make..values?
+//   // res.download('file.csv');
+//   var str = '';
+//   for (var key in req.body) {
+//     str += key + ',';
+//   }
 
-  var headerStr = str.slice(0, str.length - 1);
+//   var headerStr = str.slice(0, str.length - 1);
 
-  var strV = '';
-  for (var key in req.body) {
-    strV += req.body[key] + ',';
-  }
+//   var strV = '';
+//   for (var key in req.body) {
+//     strV += req.body[key] + ',';
+//   }
 
-  var valueStr = strV.slice(0, strV.length - 1);
+//   var valueStr = strV.slice(0, strV.length - 1);
 
-  var csv = headerStr + "\n" + valueStr;
-  console.log('comma separated values-----------------', csv);
+//   var csv = headerStr + "\n" + valueStr;
+//   console.log('comma separated values-----------------', csv);
 
-  //change res.header? how to get response to include the csv file
+//   //change res.header? how to get response to include the csv file
 
-  // res.download(csv);
-  next();
+//   // res.send(csv);
+//   next();
 
-}
+// }
 
 
-module.exports = converter;
+// module.exports = converter;
