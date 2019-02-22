@@ -1,4 +1,5 @@
 var express = require('express');
+var http = require('http');
 var bodyParser = require('body-parser');
 var Converter = require('./middleware/converter');
 var app = express();
@@ -14,9 +15,8 @@ app.get('/', function(req, res) {
 })
 
 
-app.post('/', function(req, res) {
+app.post('/upload_json', function(req, res) {
   console.log('req.body in server----------------------------------------------', req.body);
-  console.log('res.body in server----------------------------------------------', res);
 })
 
 app.listen(3000);

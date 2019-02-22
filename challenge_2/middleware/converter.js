@@ -23,7 +23,6 @@ var converter = (req, res, next) => {
   }
 
   var headerStr = str.slice(0, str.length - 1);
-  // console.log('headerStr=======================', headerStr);
 
   var strV = '';
   for (var key in req.body) {
@@ -35,17 +34,12 @@ var converter = (req, res, next) => {
   var csv = headerStr + "\n" + valueStr;
   console.log('comma separated values-----------------', csv);
 
+  //change res.header? how to get response to include the csv file
+
   // res.download(csv);
-
-
-
   next();
 
 }
-
-
-
-
 
 
 module.exports = converter;
