@@ -5,7 +5,7 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(Converter); //middleware to convert json to csv? 
+app.use(Converter); //middleware to convert json to csv? 
 app.use(express.static('client'));
 
 
@@ -15,10 +15,8 @@ app.get('/', function(req, res) {
 
 
 app.post('/', function(req, res) {
-  console.log("Hi!");
-  console.log('req----------------------------------------------', req);
-  res.send(req.body);
-
+  console.log('req.body in server----------------------------------------------', req.body);
+  console.log('res.body in server----------------------------------------------', res);
 })
 
 app.listen(3000);
