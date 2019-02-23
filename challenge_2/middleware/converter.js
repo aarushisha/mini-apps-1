@@ -13,10 +13,8 @@ You may also assume that child records in the JSON will always be in a property 
 
 
 var converter = (req, res, next) => {
-  // console.log('req.body in converter-----------------------', req.body);
-  //take the req.body object and iterate over keys, make them headers
-  //iterate over values to make..values?
-  // res.download('file.csv');
+  console.log('req in converter ====================', req);
+
   var str = '';
   for (var key in req.body) {
     str += key + ',';
@@ -34,12 +32,9 @@ var converter = (req, res, next) => {
   var csv = headerStr + "\n" + valueStr;
   console.log('comma separated values-----------------', csv);
 
-  //change res.header? how to get response to include the csv file
 
  req.csv = csv;
 
-
-  // res.send(csv);
   next();
 
 }
