@@ -9,7 +9,7 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(Converter); //middleware to convert json to csv? 
+// app.use(Converter); //middleware to convert json to csv? 
 app.use(express.static('client'));
 
 
@@ -60,6 +60,42 @@ var form2 = `<!DOCTYPE html>
   </body>
 </html>`;
 
+var flatten = (jsonObject) => {
+  for (var key in jsonObject) {
+    if (key === "children") {
+      
+    }
+  }
+
+}
+
+
+var converter = (jsonObject) => {
+
+  var str = '';
+  for (var key in jsonObject) {
+    str += key + ',';
+  }
+
+  var headerStr = str.slice(0, str.length - 1);
+
+  var strV = '';
+  for (var key in jsonObject) {
+    strV += jsonObject[key] + ',';
+  }
+
+  var valueStr = strV.slice(0, strV.length - 1);
+
+  var csv = headerStr + "\n" + valueStr;
+  // console.log('comma separated values-----------------', csv);
+
+return csv;
+
+}
+
+
+
+
 
 app.get('/', function(req, res) {
   res.send(form2);
@@ -67,9 +103,12 @@ app.get('/', function(req, res) {
 
 
 app.post('/converter', upload.single('json'), function(req, res) {
-  console.log('req====================', req)
+  console.log('req.file.buffer in POST====================', req.file.buffer)
 
-  var results = req.csv;
+  var obj = JSON.parse(req.file.buffer);
+  console.log("obj------------------------------------", obj);
+
+  var results = converter(obj);
 
   res.send(results + form2);
 })
