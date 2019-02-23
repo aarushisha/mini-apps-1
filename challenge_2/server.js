@@ -3,7 +3,8 @@ var http = require('http');
 var bodyParser = require('body-parser');
 var Converter = require('./middleware/converter');
 var multer  = require('multer');
-var upload = multer({dest: 'uploads/'});
+var storage = multer.memoryStorage();
+var upload = multer({ storage: storage });
 var app = express();
 
 app.use(bodyParser.json());
