@@ -2,6 +2,8 @@ var express = require('express');
 var http = require('http');
 var bodyParser = require('body-parser');
 var Converter = require('./middleware/converter');
+var multer  = require('multer');
+var upload = multer({dest: 'uploads/'});
 var app = express();
 
 app.use(bodyParser.json());
@@ -49,9 +51,8 @@ var form2 = `<!DOCTYPE html>
   </head>
   <body>
     <h1>Training Form</h1>
-    <form action="/converter" method="POST">
-    <input type="file">
-
+    <form enctype="multipart/form-data" action="/converter" method="POST">
+    <input type="file" accept=".json" name="json">
       <input type="submit">
     </form>
     <script src='server.js'></script>
@@ -64,7 +65,8 @@ app.get('/', function(req, res) {
 })
 
 
-app.post('/converter', function(req, res) {
+app.post('/converter', upload.single('json'), function(req, res) {
+  console.log('req====================', req)
 
   var results = req.csv;
 
