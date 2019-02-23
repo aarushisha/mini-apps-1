@@ -48,10 +48,10 @@ app.use(express.static('client'));
 var form2 = `<!DOCTYPE html>
 <html>
   <head>
-    <title>Training Form</title>
+    <title>JSON to CSV</title>
   </head>
   <body>
-    <h1>Training Form</h1>
+    <h1>JSON to CSV</h1>
     <form enctype="multipart/form-data" action="/converter" method="POST">
     <input type="file" accept=".json" name="json">
       <input type="submit">
@@ -60,14 +60,7 @@ var form2 = `<!DOCTYPE html>
   </body>
 </html>`;
 
-var flatten = (jsonObject) => {
-  for (var key in jsonObject) {
-    if (key === "children") {
-      
-    }
-  }
 
-}
 
 
 var converter = (jsonObject) => {
@@ -103,10 +96,10 @@ app.get('/', function(req, res) {
 
 
 app.post('/converter', upload.single('json'), function(req, res) {
-  console.log('req.file.buffer in POST====================', req.file.buffer)
 
   var obj = JSON.parse(req.file.buffer);
   console.log("obj------------------------------------", obj);
+
 
   var results = converter(obj);
 
