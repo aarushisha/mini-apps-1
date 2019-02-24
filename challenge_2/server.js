@@ -61,29 +61,8 @@ var createValues = jsonObject => {
 }
 
 var converter = (jsonObject) => {
-
-  // var str = '';
-  // for (var key in jsonObject) {
-  //   if (key !== 'children') {
-  //     str += key + ',';
-  //   }
-  // }
-
-  // var headerStr = str.slice(0, str.length - 1);
-
-  // var strV = '';
-  // for (var key in jsonObject) {
-  //   strV += jsonObject[key] + ',';
-  // }
-
-  // var valueStr = strV.slice(0, strV.length - 1);
-
-  // var csv = headerStr + "\n" + valueStr;
-
   var csv = createHeaders(jsonObject) + "\n" + createValues(jsonObject);
-
-
-return csv;
+  return csv;
 
 }
 
@@ -97,19 +76,12 @@ app.get('/', function(req, res) {
 
 
 app.post('/converter', upload.single('json'), function(req, res) {
-
-  
-
   var obj = JSON.parse(req.file.buffer);
-  console.log("obj------------------------------------", obj);
-  createValues(obj);
-  createHeaders(obj);
-
-
   var results = converter(obj);
-
-  res.send(results + form2);
+  res.attachment(results);
+  res.send(results);
 })
+
 
 app.listen(3000);
 
