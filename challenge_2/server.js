@@ -38,6 +38,7 @@ var createHeaders = jsonObject => {
   }
 
   var headersString = headersArray.join(',');
+  // console.log('headersString---------------------', headersString);
   return headersString;
 }
 
@@ -65,15 +66,19 @@ var converter = (jsonObject) => {
 
 }
 
-app.get('/', function(req, res) {
+app.get('/converter', function(req, res) {
   res.send(form2);
 })
 
 
 app.post('/converter', upload.single('json'), function(req, res) {
-  var obj = JSON.parse(req.file.buffer);
+  console.log('req=========================', req.body.results);
+  var obj = JSON.parse(req.body.results);
+  
+  // console.log('type of', typeof req.body.results);
+  // var obj = req.body.results;
+
   var results = converter(obj);
-  // res.attachment(results);
   res.send(results + form2);
 })
 

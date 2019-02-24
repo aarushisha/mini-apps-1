@@ -11,19 +11,15 @@ $(document).ready(function(){
     reader.readAsText(file);
 
     reader.onload = function(event) {
-      var result = reader.result;
-      console.log(result); //upload file results (json)
-
-
-      $.post({
+      var data = reader.result;
+      // console.log(data); //upload file results (json)
+      $.ajax({
         type: "POST",
         url: '/converter',
-        data: result,
-        processData: false,
-        contentType: false,
-        success: function(result) {
-          console.log(result);
-        }
+        data: {results : data},
+        success: function(data) {
+          console.log('Success!!!!!', data);
+        },
       });
 
 
