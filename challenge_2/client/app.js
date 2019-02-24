@@ -22,19 +22,12 @@ $(document).ready(function(){
           var downloadCSV = document.getElementById('downloadCSV');
           // console.log(downloadCSV);
           downloadCSV.innerHTML = "Click to Download CSV";
-          downloadCSV.href = URL.createObjectURL(data);
+          //object must be a File object or a Blob object to create a object URL
+          var blob = new Blob([data], {type: "text/plain;charset=utf-8"});
+          downloadCSV.href = URL.createObjectURL(blob);
         },
       });
-
-
     }
-
-
-
-
-
-    
-
   })
 });
 
