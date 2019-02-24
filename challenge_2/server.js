@@ -60,14 +60,36 @@ var form2 = `<!DOCTYPE html>
   </body>
 </html>`;
 
+var createHeaders = jsonObject => {
+  var headersArray = [];
+  for (var key in jsonObject) {
+    if (key !== 'children') {
+      headersArray.push(key);
+    }
+  }
 
+  var headersString = headersArray.join(',');
+  console.log(headersString);
+}
 
+var createValues = jsonObject => {
+  var valueArray = [];
+  for (var key in jsonObject) {
+    if (key !== 'children') {
+      valueArray.push(jsonObject[key]);
+    } 
+  }
+  var valuesString = valueArray.join(',');
+  console.log(valuesString);
+}
 
 var converter = (jsonObject) => {
 
   var str = '';
   for (var key in jsonObject) {
-    str += key + ',';
+    if (key !== 'children') {
+      str += key + ',';
+    }
   }
 
   var headerStr = str.slice(0, str.length - 1);
@@ -80,7 +102,7 @@ var converter = (jsonObject) => {
   var valueStr = strV.slice(0, strV.length - 1);
 
   var csv = headerStr + "\n" + valueStr;
-  // console.log('comma separated values-----------------', csv);
+
 
 return csv;
 
@@ -97,8 +119,12 @@ app.get('/', function(req, res) {
 
 app.post('/converter', upload.single('json'), function(req, res) {
 
+  
+
   var obj = JSON.parse(req.file.buffer);
   console.log("obj------------------------------------", obj);
+  createValues(obj);
+  createHeaders(obj);
 
 
   var results = converter(obj);
