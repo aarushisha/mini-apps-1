@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "test",
-    "start": "node server.js",
+    "start": "nodemon server.js localhost 8000",
     "compile": "./node_modules/.bin/babel client --out-dir public --presets @babel/preset-react --source-maps inline"
   },
   "author": "",
