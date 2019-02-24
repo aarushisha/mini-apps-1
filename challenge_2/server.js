@@ -79,7 +79,7 @@ app.post('/converter', upload.single('json'), function(req, res) {
   // var obj = req.body.results;
 
   var results = converter(obj);
-  res.send(results + form2);
+  res.send(results);
 })
 
 

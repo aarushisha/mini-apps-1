@@ -19,6 +19,10 @@ $(document).ready(function(){
         data: {results : data},
         success: function(data) {
           console.log('Success!!!!!', data);
+          var downloadCSV = document.getElementById('downloadCSV');
+          // console.log(downloadCSV);
+          downloadCSV.innerHTML = "Click to Download CSV";
+          downloadCSV.href = URL.createObjectURL(data);
         },
       });
 
