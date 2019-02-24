@@ -23,7 +23,6 @@ var form2 = `<!DOCTYPE html>
     <input type="file" accept=".json" name="json">
       <input type="submit">
     </form>
-    <script src='server.js'></script>
   </body>
 </html>`;
 
@@ -65,10 +64,6 @@ var converter = (jsonObject) => {
   return csv;
 
 }
-
-
-
-
 
 app.get('/', function(req, res) {
   res.send(form2);
