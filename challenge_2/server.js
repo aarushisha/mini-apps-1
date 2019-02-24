@@ -78,8 +78,8 @@ app.get('/', function(req, res) {
 app.post('/converter', upload.single('json'), function(req, res) {
   var obj = JSON.parse(req.file.buffer);
   var results = converter(obj);
-  res.attachment(results);
-  res.send(results);
+  // res.attachment(results);
+  res.send(results + form2);
 })
 
 
