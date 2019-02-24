@@ -19,10 +19,13 @@ var form2 = `<!DOCTYPE html>
   </head>
   <body>
     <h1>JSON to CSV</h1>
-    <form enctype="multipart/form-data" action="/converter" method="POST">
+    <form id="form" enctype="multipart/form-data" action="/converter" method="POST">
     <input type="file" accept=".json" name="json">
       <input type="submit">
     </form>
+    <a id="downloadCSV" href=""></a> 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>`;
 
@@ -35,7 +38,6 @@ var createHeaders = jsonObject => {
   }
 
   var headersString = headersArray.join(',');
-  console.log('headersString--------------------------------', headersString);
   return headersString;
 }
 
@@ -54,8 +56,6 @@ var createValues = jsonObject => {
       valuesString += "\n" + createValues(jsonObject.children[i]);
     }
   }
-
-  console.log('valuesString----------------------------', valuesString);
   return valuesString;
 }
 

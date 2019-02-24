@@ -1,22 +1,39 @@
-//need document.ready to make function available after the document is loaded
-
 $(document).ready(function(){
+  console.log('document is ready');
 
-  $('form').submit(function(event) {
+  $('#form').submit(function(event) {
     event.preventDefault();
-    var data = new FormData();
-    jQuery.each(jQuery('form')[0].files, function(i, file) {
-      data.append('file-'+i, file);
-    });
+    var json = document.getElementsByName('json');
+    var file = json[0].files[0];
+    console.log(file);
 
-    $.ajax({
-      url: '/converter',
-      data: data,
-      method: 'POST',
-      success: function(data) {
-        console.log(data);
-      }
-    })
+    var reader = new FileReader();
+    reader.readAsText(file);
+
+    reader.onload = function(event) {
+      var result = reader.result;
+      console.log(result); //upload file results (json)
+
+
+      $.post({
+        type: "POST",
+        url: '/converter',
+        data: result,
+        processData: false,
+        contentType: false,
+        success: function(result) {
+          console.log(result);
+        }
+      });
+
+
+    }
+
+
+
+
+
+    
 
   })
 });
