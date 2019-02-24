@@ -9,41 +9,8 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(Converter); //middleware to convert json to csv? 
 app.use(express.static('client'));
 
-
-
-// var form = `<!DOCTYPE html>
-// <html>
-//   <head>
-//     <title>Training Form</title>
-//   </head>
-//   <body>
-//     <h1>Training Form</h1>
-//     <form action="/converter" method="POST">
-//       Date: <input type="date" name="date">
-//       <br>
-//       Trainee First Name: <input type ="text" name="traineeFirstName">
-//       Trainee Last Name: <input type ="text" name="traineeLastName">
-//       <br>
-//       Trainer First Name: <input type ="text" name="trainerFirstName">
-//       Trainer Last Name: <input type ="text" name="trainerLastName">
-//       <br>
-//       Training Bench: 
-//       <br>
-//       <select name="trainingBench">
-//         <option>Pre-Analytical</option>
-//         <option>Extraction</option>
-//         <option>Library Preparation</option>
-//         <option>Sequencing</option>
-//       </select>
-//       <br>
-//       <input type="submit">
-//     </form>
-//     <script src='server.js'></script>
-//   </body>
-// </html>`
 
 var form2 = `<!DOCTYPE html>
 <html>
@@ -69,7 +36,8 @@ var createHeaders = jsonObject => {
   }
 
   var headersString = headersArray.join(',');
-  console.log(headersString);
+  console.log('headersString--------------------------------', headersString);
+  return headersString;
 }
 
 var createValues = jsonObject => {
@@ -80,28 +48,39 @@ var createValues = jsonObject => {
     } 
   }
   var valuesString = valueArray.join(',');
-  console.log(valuesString);
+  
+
+  if (jsonObject.children !== []) {
+    for (var i = 0; i < jsonObject.children.length; i++) {
+      valuesString += "\n" + createValues(jsonObject.children[i]);
+    }
+  }
+
+  console.log('valuesString----------------------------', valuesString);
+  return valuesString;
 }
 
 var converter = (jsonObject) => {
 
-  var str = '';
-  for (var key in jsonObject) {
-    if (key !== 'children') {
-      str += key + ',';
-    }
-  }
+  // var str = '';
+  // for (var key in jsonObject) {
+  //   if (key !== 'children') {
+  //     str += key + ',';
+  //   }
+  // }
 
-  var headerStr = str.slice(0, str.length - 1);
+  // var headerStr = str.slice(0, str.length - 1);
 
-  var strV = '';
-  for (var key in jsonObject) {
-    strV += jsonObject[key] + ',';
-  }
+  // var strV = '';
+  // for (var key in jsonObject) {
+  //   strV += jsonObject[key] + ',';
+  // }
 
-  var valueStr = strV.slice(0, strV.length - 1);
+  // var valueStr = strV.slice(0, strV.length - 1);
 
-  var csv = headerStr + "\n" + valueStr;
+  // var csv = headerStr + "\n" + valueStr;
+
+  var csv = createHeaders(jsonObject) + "\n" + createValues(jsonObject);
 
 
 return csv;
