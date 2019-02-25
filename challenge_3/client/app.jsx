@@ -1,11 +1,13 @@
-class Home extends React.Component{
+class HomePage extends React.Component {
   render() {
     return (
-      React.createElement('button', {className: 'checkout'})
-    )
+      <div>
+        <h1>Click below to check out!</h1>
+        <button id="checkout">Check Out</button>
+      </div>
+
+    ); 
   }
 }
 
-ReactDOM.render(
-  <Home />);
-
+ReactDOM.render(<HomePage />,  document.getElementById('home'));
