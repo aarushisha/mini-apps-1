@@ -1,12 +1,25 @@
 var express = require('express');
 var mysql =  require('mysql');
 var path = require('path');
+var bodyParser = require('body-parser')
 var app = express();
+
 app.use(express.static('public'));
+app.use(bodyParser.json());
 
 
-app.get('/', function(req, res) {
+app.get('/home', function(req, res) {
   res.sendFile(path.join(__dirname+'/public/index.html'));
+});
+
+app.get('/form1', function(req, res) {
+  db.query('INSERT INTO checkout_users (id) VALUES (null)', function(err, result) {
+    if (err) {
+      console.log('err in getting /form1', err);
+    } else {
+      console.log('created new row in checkout_users')
+    }
+  })
 });
 
 app.listen(8000);
@@ -41,7 +54,7 @@ db.query('USE checkout', function(err, result) {
   }
 });
 
-var tableQuery = 'CREATE TABLE IF NOT EXISTS checkout_users (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name CHAR, email CHAR, password CHAR, address1 CHAR, address2 CHAR, city CHAR, state CHAR, zipCode CHAR, phone CHAR, cc CHAR, exp CHAR, cvv CHAR, billingZipCode CHAR)'
+var tableQuery = 'CREATE TABLE IF NOT EXISTS checkout_users (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name CHAR(30), email CHAR(20), password CHAR(14), address1 CHAR(30), address2 CHAR(30), city CHAR(20), state CHAR(2), zipCode CHAR(5), phone CHAR(12), cc CHAR(20), exp CHAR(4), cvv CHAR(5), billingZipCode CHAR(5))'
 
 db.query(tableQuery, function(err, result) {
   if (err) {

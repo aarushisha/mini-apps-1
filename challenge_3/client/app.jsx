@@ -20,26 +20,42 @@ class App extends React.Component {
     };   
   }
 
-  saveUserInformation(event) {
+  nextStepForm1(event){
     event.preventDefault();
-    this.setState({
-      name: event.target.name,
-      email: event.target.email,
-      password: event.target.password
+    this.setState ({
+        step: 2,
+    })
+    fetch('/form1', {
+      method: 'GET',
     })
   }
 
-  nextStep(event){
+  nextStepForm2(event){
     event.preventDefault();
-    if (this.state.step !== 5) {
-      this.setState ({
-        step: this.state.step + 1,
-      })
-    } else {
-      this.setState ({
-        step: this.state.step = 1,
-      })
-    }
+    this.setState ({
+        step: 3,
+    })
+  }
+
+  nextStepForm3(event){
+    event.preventDefault();
+    this.setState ({
+        step: 4,
+    })
+  }
+
+  nextStepConfirm(event){
+    event.preventDefault();
+    this.setState ({
+        step: 5,
+    })
+  }
+
+  nextStepBackHome(event){
+    event.preventDefault();
+    this.setState ({
+        step: 1,
+    })
   }
 
   onInputChange(event) {
@@ -56,7 +72,7 @@ class App extends React.Component {
         return (
           <div>
             <h1>Click below to check out!</h1>
-             <button id="checkout" onClick={this.nextStep.bind(this)}>Check Out</button>
+             <button id="checkout" onClick={this.nextStepForm1.bind(this)}>Check Out</button>
           </div>
         ); 
     }
@@ -71,7 +87,7 @@ class App extends React.Component {
             <br></br>
             Password   <input type="password" id="password" value={this.state.password} onChange={this.onInputChange.bind(this)}></input>
             <br></br>
-            <input type="submit" value="Next" onClick={this.nextStep.bind(this)}></input>
+            <input type="submit" value="Next" onClick={this.nextStepForm2.bind(this)}></input>
           </form>
         </div>
       ); 
@@ -91,7 +107,7 @@ class App extends React.Component {
         <br></br>
         Phone Number  <input type="text" id="phone" maxLength="10" size="10" value={this.state.phone} onChange={this.onInputChange.bind(this)}></input>
         <br></br>
-        <input type="submit" value="Next" onClick={this.nextStep.bind(this)}></input>
+        <input type="submit" value="Next" onClick={this.nextStepForm3.bind(this)}></input>
       </form>
     </div>
     ); 
@@ -108,7 +124,7 @@ if (this.state.step === 4) {
       <br></br>
       Billing Zip Code <input type="text" id="billingZipCode" maxLength="5" size="5" value={this.state.billingZipCode} onChange={this.onInputChange.bind(this)}></input>
       <br></br>
-      <input type="submit" value="Next" onClick={this.nextStep.bind(this)}></input>
+      <input type="submit" value="Next" onClick={this.nextStepConfirm.bind(this)}></input>
     </form>
   </div>
   ); 
@@ -131,7 +147,7 @@ if (this.state.step === 5) {
     <p>CVV: {this.state.cvv}</p>
     <p>Billing Zip Code: {this.state.billingZipCode}</p>
 
-    <button onClick={this.nextStep.bind(this)}>Purchase</button>
+    <button onClick={this.nextStepBackHome.bind(this)}>Purchase</button>
   </div>
   ); 
 }
