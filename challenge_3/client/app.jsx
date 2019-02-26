@@ -15,7 +15,7 @@ class App extends React.Component {
       phone: '',
       cc: '',
       exp: '',
-      ccv: '',
+      cvv: '',
       billingZipCode: '',
     };   
   }
@@ -43,6 +43,7 @@ class App extends React.Component {
   }
 
   onInputChange(event) {
+    event.preventDefault();
     this.setState({
       [event.target.id]: event.target.value
     })
@@ -116,6 +117,20 @@ if (this.state.step === 5) {
   return (
     <div>
     <h1>Confirm Information</h1>
+    <p>Name: {this.state.name}</p>
+    <p>Email: {this.state.email}</p>
+    <p>Password: {this.state.password}</p>
+    <p>Address Line 1: {this.state.address1}</p>
+    <p>Address Line 2: {this.state.address2}</p>
+    <p>City: {this.state.city}</p>
+    <p>State: {this.state.state}</p>
+    <p>Zip Code: {this.state.zipCode}</p>
+    <p>Phone Number: {this.state.phone}</p>
+    <p>Credit Card Number: {this.state.cc}</p>
+    <p>Expiration Date: {this.state.exp}</p>
+    <p>CVV: {this.state.cvv}</p>
+    <p>Billing Zip Code: {this.state.billingZipCode}</p>
+
     <button onClick={this.nextStep.bind(this)}>Purchase</button>
   </div>
   ); 
