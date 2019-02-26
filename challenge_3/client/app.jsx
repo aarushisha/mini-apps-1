@@ -43,11 +43,9 @@ class App extends React.Component {
   }
 
   onInputChange(event) {
-    console.log(event.target);
     this.setState({
       [event.target.id]: event.target.value
     })
-    console.log(this.state.name);
   }
 
 
@@ -65,12 +63,12 @@ class App extends React.Component {
       return (
         <div>
           <h1>Enter User Information</h1>
-          <form onClick={this.saveUserInformation.bind(this)}>
+          <form>
             Name   <input type="text" id="name" name="name" value={this.state.name} onChange={this.onInputChange.bind(this)}></input>
             <br></br>
-            Email   <input type="text" id="email" value={this.state.email}></input>
+            Email   <input type="text" id="email" value={this.state.email} onChange={this.onInputChange.bind(this)}></input>
             <br></br>
-            Password   <input type="text" id="password" value={this.state.password}></input>
+            Password   <input type="text" id="password" value={this.state.password} onChange={this.onInputChange.bind(this)}></input>
             <br></br>
             <input type="submit" value="Next" onClick={this.nextStep.bind(this)}></input>
           </form>
@@ -82,15 +80,15 @@ class App extends React.Component {
       <div>
       <h1>Enter Shipping Information</h1>
       <form>
-        Address Line 1   <input type="text" id="line1" size="20"></input>
+        Address Line 1   <input type="text" id="line1" size="20" onChange={this.onInputChange.bind(this)}></input>
         <br></br>
-        Address Line 2   <input type="text" id="line2" size="20"></input>
+        Address Line 2   <input type="text" id="line2" size="20" onChange={this.onInputChange.bind(this)}></input>
         <br></br>
-        City   <input type="text" id="city"></input>
-        State  <input type="text" id="st" maxLength="2" size="2"></input>
-        Zip Code  <input type="text" id="zipcode" maxLength="5" size="5"></input>
+        City   <input type="text" id="city" onChange={this.onInputChange.bind(this)}></input>
+        State  <input type="text" id="st" maxLength="2" size="2" onChange={this.onInputChange.bind(this)}></input>
+        Zip Code  <input type="text" id="zipcode" maxLength="5" size="5" onChange={this.onInputChange.bind(this)}></input>
         <br></br>
-        Phone Number  <input type="text" id="phone" maxLength="10" size="10"></input>
+        Phone Number  <input type="text" id="phone" maxLength="10" size="10" onChange={this.onInputChange.bind(this)}></input>
         <br></br>
         <input type="submit" value="Next" onClick={this.nextStep.bind(this)}></input>
       </form>
@@ -102,12 +100,12 @@ if (this.state.step === 4) {
     <div>
     <h1>Enter Billing Information</h1>
     <form>
-      Credit Card Number   <input type="text" id="ccnumber" maxLength="20" size="20"></input>
+      Credit Card Number   <input type="text" id="ccnumber" maxLength="20" size="20" onChange={this.onInputChange.bind(this)}></input>
       <br></br>
-      Expiration Date   <input type="text" id="expiration" maxLength="4" size="4"></input>
+      Expiration Date   <input type="text" id="expiration" maxLength="4" size="4" onChange={this.onInputChange.bind(this)}></input>
       CVV   <input type="text" id="cvv"></input>
       <br></br>
-      Billing Zip Code <input type="text" id="billingzip" maxLength="5" size="5"></input>
+      Billing Zip Code <input type="text" id="billingzip" maxLength="5" size="5" onChange={this.onInputChange.bind(this)}></input>
       <br></br>
       <input type="submit" value="Next" onClick={this.nextStep.bind(this)}></input>
     </form>
