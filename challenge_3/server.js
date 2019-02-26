@@ -23,7 +23,6 @@ app.get('/form1', function(req, res) {
 });
 
 app.post('/form2', function(req, res) {
-  console.log(req.body);
   var name = req.body.name;
   var email = req.body.email;
   var password = req.body.password;
@@ -36,6 +35,24 @@ app.post('/form2', function(req, res) {
     }
   })
 })
+
+app.post('/form3', function(req, res) {
+  var address1 = req.body.address1;
+  var address2 = req.body.address2;
+  var city = req.body.city;
+  var state = req.body.state;
+  var zipCode = req.body.zipCode;
+  var phone = req.body.phone;
+  var query = `UPDATE checkout_users SET address1="${address1}", address2="${address2}", city="${city}", state="${state}", zipCode="${zipCode}", phone="${phone}" WHERE id =LAST_INSERT_ID()`
+  db.query(query, function(err, results) {
+    if (err) {
+      console.log("error in updating address information", err);
+    } else {
+      console.log('updated with address information');
+    }
+  })
+})
+
 
 app.listen(8000);
 

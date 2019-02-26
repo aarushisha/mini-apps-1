@@ -44,6 +44,8 @@ class App extends React.Component {
         email: this.state.email,
         password: this.state.password
       }),
+    }).catch(function(err) {
+      console.log(err);
     })
   }
 
@@ -52,6 +54,20 @@ class App extends React.Component {
     this.setState ({
         step: 4,
     })
+    fetch('/form3', {
+      method: 'POST',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify( {
+        address1: this.state.address1,
+        address2: this.state.address2,
+        city: this.state.city,
+        state: this.state.state,
+        zipCode: this.state.zipCode,
+        phone: this.state.phone
+      })
+    }).catch(function(err) {
+      console.log(err);
+    }) 
   }
 
   nextStepConfirm(event){
