@@ -4,7 +4,29 @@ class App extends React.Component {
     super(props);
     this.state = {
       step: 1,
+      name: '',
+      email: '',
+      password: '',
+      address1: '',
+      address2: '',
+      city: '',
+      state: '',
+      zipCode: '',
+      phone: '',
+      cc: '',
+      exp: '',
+      ccv: '',
+      billingZipCode: '',
     };   
+  }
+
+  saveUserInformation(event) {
+    event.preventDefault();
+    this.setState({
+      name: event.target.name,
+      email: event.target.email,
+      password: event.target.password
+    })
   }
 
   nextStep(event){
@@ -20,6 +42,13 @@ class App extends React.Component {
     }
   }
 
+  onInputChange(event) {
+    console.log(event.target);
+    this.setState({
+      [event.target.id]: event.target.value
+    })
+    console.log(this.state.name);
+  }
 
 
 
@@ -36,12 +65,12 @@ class App extends React.Component {
       return (
         <div>
           <h1>Enter User Information</h1>
-          <form>
-            Name   <input type="text" id="name"></input>
+          <form onClick={this.saveUserInformation.bind(this)}>
+            Name   <input type="text" id="name" name="name" value={this.state.name} onChange={this.onInputChange.bind(this)}></input>
             <br></br>
-            Email   <input type="text" id="email"></input>
+            Email   <input type="text" id="email" value={this.state.email}></input>
             <br></br>
-            Password   <input type="text" id="password"></input>
+            Password   <input type="text" id="password" value={this.state.password}></input>
             <br></br>
             <input type="submit" value="Next" onClick={this.nextStep.bind(this)}></input>
           </form>
@@ -90,7 +119,6 @@ if (this.state.step === 5) {
     <div>
     <h1>Confirm Information</h1>
     <button onClick={this.nextStep.bind(this)}>Purchase</button>
-
   </div>
   ); 
 }
