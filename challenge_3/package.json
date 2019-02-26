@@ -6,7 +6,7 @@
   "scripts": {
     "test": "test",
     "start": "nodemon server.js localhost 8000",
-    "compile": "./node_modules/.bin/babel client --out-dir public --presets @babel/preset-react --source-maps inline"
+    "babel": "./node_modules/.bin/babel client --out-dir public --presets @babel/preset-react --source-maps inline --watch"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +14,7 @@
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.3",
     "@babel/preset-react": "^7.0.0",
+    "mysql": "^2.16.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1"
   }
