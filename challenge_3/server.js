@@ -24,6 +24,17 @@ app.get('/form1', function(req, res) {
 
 app.post('/form2', function(req, res) {
   console.log(req.body);
+  var name = req.body.name;
+  var email = req.body.email;
+  var password = req.body.password;
+  //want to select last added ID?
+  db.query(`UPDATE checkout_users SET name="${name}", email="${email}", password="${password}" WHERE id =LAST_INSERT_ID()`, function(err, results) {
+    if (err) {
+      console.log('error in updating with user information', err);
+    } else {
+      console.log('updated with name, email, password');
+    }
+  })
 })
 
 app.listen(8000);
