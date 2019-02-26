@@ -35,6 +35,16 @@ class App extends React.Component {
     this.setState ({
         step: 3,
     })
+    fetch('/form2', {
+      method: 'POST',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(
+        {
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password
+      })
+    })
   }
 
   nextStepForm3(event){

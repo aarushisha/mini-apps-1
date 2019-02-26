@@ -22,6 +22,10 @@ app.get('/form1', function(req, res) {
   })
 });
 
+app.post('/form2', function(req, res) {
+  console.log(req.body);
+})
+
 app.listen(8000);
 
 var db = mysql.createConnection({
