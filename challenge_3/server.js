@@ -19,7 +19,8 @@ app.get('/form1', function(req, res) {
     } else {
       console.log('created new row in checkout_users')
     }
-  })
+  });
+  res.sendStatus(200);
 });
 
 app.post('/form2', function(req, res) {
@@ -33,7 +34,8 @@ app.post('/form2', function(req, res) {
     } else {
       console.log('updated with name, email, password');
     }
-  })
+  });
+  res.sendStatus(200);
 })
 
 app.post('/form3', function(req, res) {
@@ -50,7 +52,24 @@ app.post('/form3', function(req, res) {
     } else {
       console.log('updated with address information');
     }
-  })
+  });
+  res.sendStatus(200);
+})
+
+app.post('/form4', function(req, res) {
+  var cc =  req.body.cc;
+  var exp = req.body.exp;
+  var cvv =  req.body.cvv;
+  var billingZipCode = req.body.billingZipCode;
+  db.query(`UPDATE checkout_users SET cc="${cc}", exp="${exp}", cvv="${cvv}", billingZipCode="${billingZipCode}" WHERE id= LAST_INSERT_ID()`, function(err, results) {
+    if (err) {
+      console.log('error in updating with credit card information', err);
+    } else {
+      console.log('updated with credit card information');
+    }
+  });
+  res.sendStatus(200);
+
 })
 
 

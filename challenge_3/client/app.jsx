@@ -75,6 +75,18 @@ class App extends React.Component {
     this.setState ({
         step: 5,
     })
+    fetch('/form4', {
+      method: 'POST',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify( {
+        cc: this.state.cc,
+        exp: this.state.exp,
+        cvv: this.state.cvv,
+        billingZipCode: this.state.billingZipCode,
+      })
+    }).catch(function(err) {
+      console.log(err);
+    })
   }
 
   nextStepBackHome(event){
