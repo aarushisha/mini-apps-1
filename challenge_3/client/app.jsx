@@ -24,6 +24,19 @@ class App extends React.Component {
     event.preventDefault();
     this.setState ({
         step: 2,
+        name: '',
+        email: '',
+        password: '',
+        address1: '',
+        address2: '',
+        city: '',
+        state: '',
+        zipCode: '',
+        phone: '',
+        cc: '',
+        exp: '',
+        cvv: '',
+        billingZipCode: '',
     })
     fetch('/form1', {
       method: 'GET',
