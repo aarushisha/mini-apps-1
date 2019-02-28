@@ -2,6 +2,7 @@ console.log('hi');
 import React from 'react';
 import {Component} from 'react';
 import ReactDOM from 'react-dom';
+// import Circle from 'component1';
 
 
 
@@ -10,27 +11,37 @@ class Board extends Component {
     super(props);
     this.state = {
       turn: 1,
-      player: 'X',
+      playerIsBlue: true,
     }
   }
+
+
+  playerClick(event) {
+    this.setState((state, props) => {
+      return {turn: state.turn + 1, playerIsBlue: !state.playerIsBlue};
+    });
+    console.log(this.state);
+
+  }
+
   render() {
     return (
         <div>
-          <div id="player">Current player: {this.state.player}</div>
+          <div id="player">Current player: {this.state.playerIsBlue ? 'blue' : "red"} </div>
           <br></br>
           <table id="connect4board">
           <tbody>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
             </tr>
             <tr>
-              <td></td>
+              <td onClick={this.playerClick.bind(this)}></td>
               <td></td>
               <td></td>
               <td></td>
