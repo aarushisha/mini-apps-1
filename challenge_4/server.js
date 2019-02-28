@@ -5,10 +5,12 @@ var bodyParser = require('body-parser')
 
 var app = express();
 
-app.use(express.static('client'));
+app.use(express.static(__dirname + '/client/dist/'));
 
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname + '/client/dist/index.html'));
+  res.sendFile(path.join(__dirname + '/client/dist/'));
 })
 
-app.listen(3333);
+app.listen(3333, function() {
+  console.log("listening");
+});
