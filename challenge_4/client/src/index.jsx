@@ -18,14 +18,17 @@ class Board extends Component {
   }
 
   playerClick(event) {
-    if (this.state.playerIsRed) {
+    if (this.state.playerIsRed && event.target.style.backgroundColor === '') {
       event.target.style.backgroundColor = "red";
-    } else {
+      this.setState((state, props) => {
+        return {turn: state.turn + 1, playerIsRed: !state.playerIsRed};
+      });
+    } else if (!this.state.playerIsRed && event.target.style.backgroundColor === '') {
       event.target.style.backgroundColor = "yellow";
+      this.setState((state, props) => {
+        return {turn: state.turn + 1, playerIsRed: !state.playerIsRed};
+      });
     }
-    this.setState((state, props) => {
-      return {turn: state.turn + 1, playerIsRed: !state.playerIsRed};
-    });
     console.log(this.state);
 
   }
