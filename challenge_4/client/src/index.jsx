@@ -2,7 +2,7 @@ console.log('hi');
 import React from 'react';
 import {Component} from 'react';
 import ReactDOM from 'react-dom';
-// import Circle from 'component1';
+import Circle from './components/Component1.jsx';
 
 
 
@@ -14,6 +14,15 @@ class Board extends Component {
     this.state = {
       turn: 1,
       playerIsRed: true,
+      board: [
+        [], //each one is the column
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+      ],
     }
   }
 
