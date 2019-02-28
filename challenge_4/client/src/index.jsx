@@ -4,10 +4,6 @@ import {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Circle from './components/Component1.jsx';
 
-
-
-
-
 class Board extends Component {
   constructor(props) {
     super(props);
@@ -45,74 +41,18 @@ class Board extends Component {
   render() {
 
     const circles = [];
-    for (var i = 0; i < 6; i++) {
-      for (var j = 0; j < 7; j++) {
-        circles.push(<Circle x={j} y={i}/>)
+    for (var r = 0; r < 6; r++) {
+      for (var c = 0; c < 7; c++) {
+        circles.push(<Circle c={c} r={r}/>)
       }
     }
     return (
         <div>
           <div id="player">Current player: {this.state.playerIsRed ? 'red' : "yellow"} </div>
           <br></br>
+          <div className = "grid">
           {circles}
-          {/* <table id="connect4board">
-          <tbody>
-            <tr className="row1">
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-            </tr>
-            <tr className="row2">
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-            </tr>
-            <tr className="row3">
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-            </tr>
-            <tr className="row4">
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-            </tr>
-            <tr className="row5">
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-            </tr>
-            <tr className="row6">
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-              <td onClick={this.playerClick.bind(this)}></td>
-            </tr>
-            </tbody>
-          </table> */}
+          </div>
           <button id="newGame">New Game</button>
         </div>
     )
