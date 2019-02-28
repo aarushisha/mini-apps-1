@@ -43,11 +43,19 @@ class Board extends Component {
   }
 
   render() {
+
+    const circles = [];
+    for (var i = 0; i < 6; i++) {
+      for (var j = 0; j < 7; j++) {
+        circles.push(<Circle x={j} y={i}/>)
+      }
+    }
     return (
         <div>
           <div id="player">Current player: {this.state.playerIsRed ? 'red' : "yellow"} </div>
           <br></br>
-          <table id="connect4board">
+          {circles}
+          {/* <table id="connect4board">
           <tbody>
             <tr className="row1">
               <td onClick={this.playerClick.bind(this)}></td>
@@ -104,7 +112,7 @@ class Board extends Component {
               <td onClick={this.playerClick.bind(this)}></td>
             </tr>
             </tbody>
-          </table>
+          </table> */}
           <button id="newGame">New Game</button>
         </div>
     )
