@@ -1,0 +1,18 @@
+
+tr, td {
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+
+table {
+  border: 5px solid black;
+}
+
+tr {
+  height: 50px;
+}
+
+td {
+  width: 50px;
+}
