@@ -2,7 +2,7 @@ console.log('hi');
 import React from 'react';
 import {Component} from 'react';
 import ReactDOM from 'react-dom';
-import Circle from './components/Component1.jsx';
+import Circle from './components/Circle.jsx';
 
 class Board extends Component {
   constructor(props) {
@@ -22,28 +22,12 @@ class Board extends Component {
     }
   }
 
-  playerClick(event) {
-    if (this.state.playerIsRed && event.target.style.backgroundColor === '') {
-      event.target.style.backgroundColor = "red";
-      this.setState((state, props) => {
-        return {turn: state.turn + 1, playerIsRed: !state.playerIsRed};
-      });
-    } else if (!this.state.playerIsRed && event.target.style.backgroundColor === '') {
-      event.target.style.backgroundColor = "yellow";
-      this.setState((state, props) => {
-        return {turn: state.turn + 1, playerIsRed: !state.playerIsRed};
-      });
-    }
-    console.log(this.state);
-
-  }
-
   render() {
 
     const circles = [];
     for (var r = 0; r < 6; r++) {
       for (var c = 0; c < 7; c++) {
-        circles.push(<Circle c={c} r={r}/>)
+        circles.push(<Circle key={`${r},${c}`} r={r} c={c}/>)
       }
     }
     return (
