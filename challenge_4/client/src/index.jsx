@@ -6,19 +6,25 @@ import ReactDOM from 'react-dom';
 
 
 
+
+
 class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
       turn: 1,
-      playerIsBlue: true,
+      playerIsRed: true,
     }
   }
 
-
   playerClick(event) {
+    if (this.state.playerIsRed) {
+      event.target.style.backgroundColor = "red";
+    } else {
+      event.target.style.backgroundColor = "yellow";
+    }
     this.setState((state, props) => {
-      return {turn: state.turn + 1, playerIsBlue: !state.playerIsBlue};
+      return {turn: state.turn + 1, playerIsRed: !state.playerIsRed};
     });
     console.log(this.state);
 
@@ -27,11 +33,11 @@ class Board extends Component {
   render() {
     return (
         <div>
-          <div id="player">Current player: {this.state.playerIsBlue ? 'blue' : "red"} </div>
+          <div id="player">Current player: {this.state.playerIsRed ? 'red' : "yellow"} </div>
           <br></br>
           <table id="connect4board">
           <tbody>
-            <tr>
+            <tr className="row1">
               <td onClick={this.playerClick.bind(this)}></td>
               <td onClick={this.playerClick.bind(this)}></td>
               <td onClick={this.playerClick.bind(this)}></td>
@@ -40,53 +46,54 @@ class Board extends Component {
               <td onClick={this.playerClick.bind(this)}></td>
               <td onClick={this.playerClick.bind(this)}></td>
             </tr>
-            <tr>
+            <tr className="row2">
               <td onClick={this.playerClick.bind(this)}></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
             </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            <tr className="row3">
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
             </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            <tr className="row4">
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
             </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            <tr className="row5">
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
             </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            <tr className="row6">
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
+              <td onClick={this.playerClick.bind(this)}></td>
             </tr>
             </tbody>
           </table>
+          <button id="newGame">New Game</button>
         </div>
     )
   }
