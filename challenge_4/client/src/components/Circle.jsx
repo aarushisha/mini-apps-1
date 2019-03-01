@@ -4,11 +4,6 @@ import ReactDOM from 'react-dom';
 
 class Circle extends Component {
 
-  clickCircle(event) {
-    console.log(`You have clicked row ${this.props.r}, column ${this.props.c}`);
-    console.log(this.props);
-    // event.target.style.backgroundColor = 'red';
-  }
 
   render() {
     return (

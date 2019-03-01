@@ -11,31 +11,40 @@ class Board extends Component {
       turn: 1,
       playerIsRed: true,
       board: [
-        [], //each one is the column - need to keep track of what bottom-most position is open in column
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
+        ['x','x','x','x','x','x','x'], 
+        ['x','x','x','x','x','x','x'],
+        ['x','x','x','x','x','x','x'],
+        ['x','x','x','x','x','x','x'],
+        ['x','x','x','x','x','x','x'],
+        ['x','x','x','x','x','x','x'],
       ],
     }
     this.playerMakesMove = this.playerMakesMove.bind(this);
   }
 
-  playerMakesMove() {
+
+  updateBoard(row, column, board) {
+    var newBoard = board.slice();
+    newBoard
+
+  }
+
+  playerMakesMove(event) {
+    var row = parseInt(event.target.textContent.slice(0,1));
+    var col = parseInt(event.target.textContent.slice(3));
+    console.log(row);
+    console.log(col);
     console.log('player has made a move');
-    console.log(this.state);
     this.setState ({
       turn: this.state.turn + 1,
-      playerIsRed: !this.state.playerIsRed
+      playerIsRed: !this.state.playerIsRed, 
     })
   }
 
   render() {
 
     const circles = [];
-    for (var r = 5; r >=0; r--) {
+    for (var r = 0; r <=5; r++) {
       for (var c = 0; c < 7; c++) {
         //key -> identify circle?
         circles.push(<Circle playerMakesMove={this.playerMakesMove} key={`${r},${c}`} r={r} c={c}/>)
