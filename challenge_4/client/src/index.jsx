@@ -18,6 +18,7 @@ class Board extends Component {
         ['x','x','x','x','x','x','x'],
         ['x','x','x','x','x','x','x'],
       ],
+      announcement: '',
     }
     this.playerMakesMove = this.playerMakesMove.bind(this);
   }
@@ -26,6 +27,31 @@ class Board extends Component {
     if (this.state.turn === 42) {
       alert('tie game! please select new game to refresh the board!');
     }
+  }
+
+  detectVerticalWin(row, col) {
+
+  }
+
+  detectHorizontalWin() {
+    var redWin = [true, true, true, true];
+    var yelWin = [false, false, false, false];
+    for (var r = 0; r < 6; r++) {
+      for (var c = 0; c < 4; c++) {
+        if (JSON.stringify([this.state.board[r][c], this.state.board[r][c + 1], this.state.board[r][c + 2], this.state.board[r][c + 3]]) === JSON.stringify(redWin)) {
+          alert('Player Red is the Winner!');
+          this.setState({announcement: 'Player Red is the Winner! Click "New Game" to play again!'})
+        }
+        if (JSON.stringify([this.state.board[r][c], this.state.board[r][c + 1], this.state.board[r][c + 2], this.state.board[r][c + 3]]) === JSON.stringify(yelWin)) {
+          alert('Player Yellow is the Winner!');
+          this.setState({announcement: 'Player Yellow is the Winner! Click "New Game" to play again!'})
+        }
+      }
+    }
+  }
+
+  detectDiagonalWin(row,col) {
+
   }
 
   updateBoard(row, column, board) {
@@ -63,7 +89,8 @@ class Board extends Component {
       board: this.updateBoard(row, col, this.state.board)
     })
 
-    this.detectTie()
+    this.detectTie();
+    this.detectHorizontalWin();
   }
 
   resetBoard() {
@@ -83,6 +110,7 @@ class Board extends Component {
         ['x','x','x','x','x','x','x'],
         ['x','x','x','x','x','x','x'],
       ],
+      announcement: '',
     });
   }
 
@@ -97,6 +125,7 @@ class Board extends Component {
     }
     return (
         <div>
+          <div id='announcement'>{this.state.announcement}</div>
           <div id="player">Current player: {this.state.playerIsRed ? 'red' : "yellow"} </div>
           <br></br>
           <div className = "grid">
