@@ -3,6 +3,7 @@ import React from 'react';
 import {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Circle from './components/Circle.jsx';
+import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
 class Board extends Component {
   constructor(props) {
@@ -19,6 +20,8 @@ class Board extends Component {
         ['x','x','x','x','x','x','x'],
       ],
       announcement: '',
+      redWins: 0,
+      yelWins: 0,
     }
     this.playerMakesMove = this.playerMakesMove.bind(this);
   }
@@ -46,11 +49,11 @@ class Board extends Component {
       for (var c = 0; c < 7; c++) {
         if (JSON.stringify([this.state.board[r][c], this.state.board[r + 1][c], this.state.board[r + 2][c], this.state.board[r + 3][c]]) === JSON.stringify(redWin)) {
           alert('Player Red is the Winner!');
-          this.setState({announcement: 'Player Red is the Winner! Click "New Game" to play again!'})
+          this.setState({announcement: 'Player Red is the Winner! Click "New Game" to play again!', redWins: this.state.redWins + 1})
         }
         if (JSON.stringify([this.state.board[r][c], this.state.board[r + 1][c], this.state.board[r + 2][c], this.state.board[r + 3][c]]) === JSON.stringify(yelWin)) {
           alert('Player Yellow is the Winner!');
-          this.setState({announcement: 'Player Yellow is the Winner! Click "New Game" to play again!'})
+          this.setState({announcement: 'Player Yellow is the Winner! Click "New Game" to play again!', yelWins: this.state.yelWins + 1})
         }
       }
     }
@@ -65,11 +68,11 @@ class Board extends Component {
       for (var c = 0; c < 4; c++) {
         if (JSON.stringify([this.state.board[r][c], this.state.board[r][c + 1], this.state.board[r][c + 2], this.state.board[r][c + 3]]) === JSON.stringify(redWin)) {
           alert('Player Red is the Winner!');
-          this.setState({announcement: 'Player Red is the Winner! Click "New Game" to play again!'})
+          this.setState({announcement: 'Player Red is the Winner! Click "New Game" to play again!', redWins: this.state.redWins + 1})
         }
         if (JSON.stringify([this.state.board[r][c], this.state.board[r][c + 1], this.state.board[r][c + 2], this.state.board[r][c + 3]]) === JSON.stringify(yelWin)) {
           alert('Player Yellow is the Winner!');
-          this.setState({announcement: 'Player Yellow is the Winner! Click "New Game" to play again!'})
+          this.setState({announcement: 'Player Yellow is the Winner! Click "New Game" to play again!', yelWins: this.state.yelWins + 1})
         }
       }
     }
@@ -82,11 +85,11 @@ class Board extends Component {
       for (var c = 0; c < 4; c++) {
         if (JSON.stringify([this.state.board[r][c], this.state.board[r + 1][c + 1], this.state.board[r + 2][c + 2], this.state.board[r + 3][c + 3]]) === JSON.stringify(redWin)) {
           alert('Player Red is the Winner!');
-          this.setState({announcement: 'Player Red is the Winner! Click "New Game" to play again!'})
+          this.setState({announcement: 'Player Red is the Winner! Click "New Game" to play again!', redWins: this.state.redWins + 1})
         }
         if (JSON.stringify([this.state.board[r][c], this.state.board[r + 1][c + 1], this.state.board[r + 2][c + 2], this.state.board[r + 3][c + 3]]) === JSON.stringify(yelWin)) {
           alert('Player Yellow is the Winner!');
-          this.setState({announcement: 'Player Yellow is the Winner! Click "New Game" to play again!'})
+          this.setState({announcement: 'Player Yellow is the Winner! Click "New Game" to play again!', yelWins: this.state.yelWins + 1})
         }
       }
     }
@@ -99,11 +102,11 @@ class Board extends Component {
       for (var c = 0; c < 4; c++) {
         if (JSON.stringify([this.state.board[r][c], this.state.board[r - 1][c + 1], this.state.board[r - 2][c + 2], this.state.board[r - 3][c + 3]]) === JSON.stringify(redWin)) {
           alert('Player Red is the Winner!');
-          this.setState({announcement: 'Player Red is the Winner! Click "New Game" to play again!'})
+          this.setState({announcement: 'Player Red is the Winner! Click "New Game" to play again!', redWins: this.state.redWins + 1})
         }
         if (JSON.stringify([this.state.board[r][c], this.state.board[r - 1][c + 1], this.state.board[r - 2][c + 2], this.state.board[r - 3][c + 3]]) === JSON.stringify(yelWin)) {
           alert('Player Yellow is the Winner!');
-          this.setState({announcement: 'Player Yellow is the Winner! Click "New Game" to play again!'})
+          this.setState({announcement: 'Player Yellow is the Winner! Click "New Game" to play again!', yelWins: this.state.yelWins + 1})
         }
       }
     }
@@ -116,11 +119,11 @@ class Board extends Component {
       for (var c = 6; c > 2; c--) {
         if (JSON.stringify([this.state.board[r][c], this.state.board[r + 1][c - 1], this.state.board[r + 2][c - 2], this.state.board[r + 3][c - 3]]) === JSON.stringify(redWin)) {
           alert('Player Red is the Winner!');
-          this.setState({announcement: 'Player Red is the Winner! Click "New Game" to play again!'})
+          this.setState({announcement: 'Player Red is the Winner! Click "New Game" to play again!', redWins: this.state.redWins + 1})
         }
         if (JSON.stringify([this.state.board[r][c], this.state.board[r + 1][c - 1], this.state.board[r + 2][c - 2], this.state.board[r + 3][c - 3]]) === JSON.stringify(yelWin)) {
           alert('Player Yellow is the Winner!');
-          this.setState({announcement: 'Player Yellow is the Winner! Click "New Game" to play again!'})
+          this.setState({announcement: 'Player Yellow is the Winner! Click "New Game" to play again!', yelWins: this.state.yelWins + 1})
         }
       }
     }
@@ -133,11 +136,11 @@ class Board extends Component {
       for (var c = 6; c > 2; c--) {
         if (JSON.stringify([this.state.board[r][c], this.state.board[r - 1][c - 1], this.state.board[r - 2][c - 2], this.state.board[r - 3][c - 3]]) === JSON.stringify(redWin)) {
           alert('Player Red is the Winner!');
-          this.setState({announcement: 'Player Red is the Winner! Click "New Game" to play again!'})
+          this.setState({announcement: 'Player Red is the Winner! Click "New Game" to play again!', redWins: this.state.redWins + 1})
         }
         if (JSON.stringify([this.state.board[r][c], this.state.board[r - 1][c - 1], this.state.board[r - 2][c - 2], this.state.board[r - 3][c - 3]]) === JSON.stringify(yelWin)) {
           alert('Player Yellow is the Winner!');
-          this.setState({announcement: 'Player Yellow is the Winner! Click "New Game" to play again!'})
+          this.setState({announcement: 'Player Yellow is the Winner! Click "New Game" to play again!', yelWins: this.state.yelWins + 1})
         }
       }
     } 
@@ -216,7 +219,9 @@ class Board extends Component {
     return (
         <div>
           <div id='announcement'>{this.state.announcement}</div>
-          <div id="player">Current player: {this.state.playerIsRed ? 'red' : "yellow"} </div>
+          <div id='redWins'>Player Red Wins: {this.state.redWins}</div>
+          <div id='yelWins'>Player Yellow Wins: {this.state.yelWins}</div>
+          <div id="player">Current player: {this.state.playerIsRed ? 'Player Red' : "Player Yellow"} </div>
           <br></br>
           <div className = "grid">
           {circles}
