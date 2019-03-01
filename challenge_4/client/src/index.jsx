@@ -30,11 +30,33 @@ class Board extends Component {
   }
 
   playerMakesMove(event) {
-    var row = parseInt(event.target.textContent.slice(0,1));
+    var layout = document.getElementsByClassName('circle');
+    console.log(layout);
+    var row;
     var col = parseInt(event.target.textContent.slice(3));
-    console.log(row);
     console.log(col);
+    for (var i = 5; i >= 0; i--) {
+      if (this.state.board[i][col] === 'x') {
+        row = i;
+        break;
+      }
+    }
     console.log('player has made a move');
+    var stringLoc = `${row}, ${col}`;
+    console.log(stringLoc);
+    for (var i = 0; i < layout.length; i++) {
+      if (layout[i].innerHTML === stringLoc) {
+        console.log(layout[i]);
+        console.log(layout[i].innerHTML);
+        console.log(true);
+        if (this.state.playerIsRed) {
+          layout[i].style.backgroundColor = 'red';
+        } else {
+          layout[i].style.backgroundColor = 'yellow';
+        }
+      }
+ 
+    }
     this.setState ({
       turn: this.state.turn + 1,
       playerIsRed: !this.state.playerIsRed, 
