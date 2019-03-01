@@ -30,6 +30,22 @@ class Board extends Component {
   }
 
   detectVerticalWin(row, col) {
+    var redWin = [true, true, true, true];
+    var yelWin = [false, false, false, false];
+    for (var r = 0; r < 3; r++) {
+      for (var c = 0; c < 7; c++) {
+        console.log([this.state.board[r][c], this.state.board[r + 1][c], this.state.board[r + 2][c], this.state.board[r + 3][c]]);
+        if (JSON.stringify([this.state.board[r][c], this.state.board[r + 1][c], this.state.board[r + 2][c], this.state.board[r + 3][c]]) === JSON.stringify(redWin)) {
+          alert('Player Red is the Winner!');
+          this.setState({announcement: 'Player Red is the Winner! Click "New Game" to play again!'})
+        }
+        if (JSON.stringify([this.state.board[r][c], this.state.board[r + 1][c], this.state.board[r + 2][c], this.state.board[r + 3][c]]) === JSON.stringify(yelWin)) {
+          alert('Player Yellow is the Winner!');
+          this.setState({announcement: 'Player Yellow is the Winner! Click "New Game" to play again!'})
+        }
+      }
+    }
+
 
   }
 
@@ -91,6 +107,7 @@ class Board extends Component {
 
     this.detectTie();
     this.detectHorizontalWin();
+    this.detectVerticalWin();
   }
 
   resetBoard() {
