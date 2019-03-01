@@ -130,12 +130,12 @@ class Board extends Component {
     var redWin = [true, true, true, true];
     var yelWin = [false, false, false, false];
     for (var r = 5; r > 2; r--) {
-      for (var c = 0; c < 4; c++) {
-        if (JSON.stringify([this.state.board[r][c], this.state.board[r][c + 1], this.state.board[r][c + 2], this.state.board[r][c + 3]]) === JSON.stringify(redWin)) {
+      for (var c = 6; c > 2; c--) {
+        if (JSON.stringify([this.state.board[r][c], this.state.board[r - 1][c - 1], this.state.board[r - 2][c - 2], this.state.board[r - 3][c - 3]]) === JSON.stringify(redWin)) {
           alert('Player Red is the Winner!');
           this.setState({announcement: 'Player Red is the Winner! Click "New Game" to play again!'})
         }
-        if (JSON.stringify([this.state.board[r][c], this.state.board[r][c + 1], this.state.board[r][c + 2], this.state.board[r][c + 3]]) === JSON.stringify(yelWin)) {
+        if (JSON.stringify([this.state.board[r][c], this.state.board[r - 1][c - 1], this.state.board[r - 2][c - 2], this.state.board[r - 3][c - 3]]) === JSON.stringify(yelWin)) {
           alert('Player Yellow is the Winner!');
           this.setState({announcement: 'Player Yellow is the Winner! Click "New Game" to play again!'})
         }
