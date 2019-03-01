@@ -25,8 +25,8 @@ class Board extends Component {
 
   updateBoard(row, column, board) {
     var newBoard = board.slice();
-    newBoard
-
+    newBoard[row][column] = this.state.playerIsRed;
+    return newBoard;
   }
 
   playerMakesMove(event) {
@@ -38,7 +38,9 @@ class Board extends Component {
     this.setState ({
       turn: this.state.turn + 1,
       playerIsRed: !this.state.playerIsRed, 
+      board: this.updateBoard(row, col, this.state.board)
     })
+    console.log(this.state.board);
   }
 
   render() {
