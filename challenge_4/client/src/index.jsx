@@ -31,28 +31,24 @@ class Board extends Component {
 
   playerMakesMove(event) {
     var layout = document.getElementsByClassName('circle');
-    console.log(layout);
     var row;
     var col = parseInt(event.target.textContent.slice(3));
-    console.log(col);
     for (var i = 5; i >= 0; i--) {
       if (this.state.board[i][col] === 'x') {
         row = i;
         break;
-      }
+      } 
     }
     console.log('player has made a move');
     var stringLoc = `${row}, ${col}`;
-    console.log(stringLoc);
     for (var i = 0; i < layout.length; i++) {
       if (layout[i].innerHTML === stringLoc) {
-        console.log(layout[i]);
-        console.log(layout[i].innerHTML);
-        console.log(true);
         if (this.state.playerIsRed) {
           layout[i].style.backgroundColor = 'red';
+          layout[i].style.color = 'red';
         } else {
           layout[i].style.backgroundColor = 'yellow';
+          layout[i].style.color = 'yellow';
         }
       }
  
@@ -63,6 +59,26 @@ class Board extends Component {
       board: this.updateBoard(row, col, this.state.board)
     })
     console.log(this.state.board);
+  }
+
+  resetBoard() {
+    var layout = document.getElementsByClassName('circle');
+    for (var i = 0; i < layout.length; i++) {
+      layout[i].style.backgroundColor = 'white';
+      layout[i].style.color = 'white';
+    }
+    this.setState( {
+      turn: 1,
+      playerIsRed: true,
+      board: [
+        ['x','x','x','x','x','x','x'], 
+        ['x','x','x','x','x','x','x'],
+        ['x','x','x','x','x','x','x'],
+        ['x','x','x','x','x','x','x'],
+        ['x','x','x','x','x','x','x'],
+        ['x','x','x','x','x','x','x'],
+      ],
+    });
   }
 
   render() {
@@ -81,7 +97,7 @@ class Board extends Component {
           <div className = "grid">
           {circles}
           </div>
-          <button id="newGame">New Game</button>
+          <button id="newGame" onClick={this.resetBoard.bind(this)}>New Game</button>
         </div>
     )
   }
