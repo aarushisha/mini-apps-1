@@ -22,6 +22,11 @@ class Board extends Component {
     this.playerMakesMove = this.playerMakesMove.bind(this);
   }
 
+  detectTie() {
+    if (this.state.turn === 42) {
+      alert('tie game! please select new game to refresh the board!');
+    }
+  }
 
   updateBoard(row, column, board) {
     var newBoard = board.slice();
@@ -39,7 +44,6 @@ class Board extends Component {
         break;
       } 
     }
-    console.log('player has made a move');
     var stringLoc = `${row}, ${col}`;
     for (var i = 0; i < layout.length; i++) {
       if (layout[i].innerHTML === stringLoc) {
@@ -58,7 +62,8 @@ class Board extends Component {
       playerIsRed: !this.state.playerIsRed, 
       board: this.updateBoard(row, col, this.state.board)
     })
-    console.log(this.state.board);
+
+    this.detectTie()
   }
 
   resetBoard() {
