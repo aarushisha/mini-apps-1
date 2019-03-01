@@ -33,9 +33,9 @@ class Board extends Component {
     this.detectVerticalWin();
     this.detectHorizontalWin();
     this.detectDiagonalWinFromBottomLeft();
-    this.detectDiagonalWinFromBottomRight();
+    // this.detectDiagonalWinFromBottomRight();
     this.detectDiagonalWinFromTopLeft();
-    this.detectDiagonalWinFromTopRight();
+    // this.detectDiagonalWinFromTopRight();
 
   }
 
