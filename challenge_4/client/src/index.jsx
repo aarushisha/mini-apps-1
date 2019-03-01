@@ -66,9 +66,74 @@ class Board extends Component {
     }
   }
 
-  detectDiagonalWin(row,col) {
-
+  detectDiagonalWinFromTopRight() {
+    var redWin = [true, true, true, true];
+    var yelWin = [false, false, false, false];
+    for (var r = 0; r < 3; r++) {
+      for (var c = 0; c < 4; c++) {
+        if (JSON.stringify([this.state.board[r][c], this.state.board[r + 1][c + 1], this.state.board[r + 2][c + 2], this.state.board[r + 3][c + 3]]) === JSON.stringify(redWin)) {
+          alert('Player Red is the Winner!');
+          this.setState({announcement: 'Player Red is the Winner! Click "New Game" to play again!'})
+        }
+        if (JSON.stringify([this.state.board[r][c], this.state.board[r + 1][c + 1], this.state.board[r + 2][c + 2], this.state.board[r + 3][c + 3]]) === JSON.stringify(yelWin)) {
+          alert('Player Yellow is the Winner!');
+          this.setState({announcement: 'Player Yellow is the Winner! Click "New Game" to play again!'})
+        }
+      }
+    }
   }
+
+  detectDiagonalWinFromBottomRight() {
+    var redWin = [true, true, true, true];
+    var yelWin = [false, false, false, false];
+    for (var r = 0; r < 6; r++) {
+      for (var c = 0; c < 4; c++) {
+        if (JSON.stringify([this.state.board[r][c], this.state.board[r][c + 1], this.state.board[r][c + 2], this.state.board[r][c + 3]]) === JSON.stringify(redWin)) {
+          alert('Player Red is the Winner!');
+          this.setState({announcement: 'Player Red is the Winner! Click "New Game" to play again!'})
+        }
+        if (JSON.stringify([this.state.board[r][c], this.state.board[r][c + 1], this.state.board[r][c + 2], this.state.board[r][c + 3]]) === JSON.stringify(yelWin)) {
+          alert('Player Yellow is the Winner!');
+          this.setState({announcement: 'Player Yellow is the Winner! Click "New Game" to play again!'})
+        }
+      }
+    }
+  }
+
+  detectDiagonalWinFromTopLeft() {
+    var redWin = [true, true, true, true];
+    var yelWin = [false, false, false, false];
+    for (var r = 0; r < 6; r++) {
+      for (var c = 0; c < 4; c++) {
+        if (JSON.stringify([this.state.board[r][c], this.state.board[r][c + 1], this.state.board[r][c + 2], this.state.board[r][c + 3]]) === JSON.stringify(redWin)) {
+          alert('Player Red is the Winner!');
+          this.setState({announcement: 'Player Red is the Winner! Click "New Game" to play again!'})
+        }
+        if (JSON.stringify([this.state.board[r][c], this.state.board[r][c + 1], this.state.board[r][c + 2], this.state.board[r][c + 3]]) === JSON.stringify(yelWin)) {
+          alert('Player Yellow is the Winner!');
+          this.setState({announcement: 'Player Yellow is the Winner! Click "New Game" to play again!'})
+        }
+      }
+    }
+  }
+
+  detectDiagonalWinFromBottomLeft() {
+    var redWin = [true, true, true, true];
+    var yelWin = [false, false, false, false];
+    for (var r = 0; r < 6; r++) {
+      for (var c = 0; c < 4; c++) {
+        if (JSON.stringify([this.state.board[r][c], this.state.board[r][c + 1], this.state.board[r][c + 2], this.state.board[r][c + 3]]) === JSON.stringify(redWin)) {
+          alert('Player Red is the Winner!');
+          this.setState({announcement: 'Player Red is the Winner! Click "New Game" to play again!'})
+        }
+        if (JSON.stringify([this.state.board[r][c], this.state.board[r][c + 1], this.state.board[r][c + 2], this.state.board[r][c + 3]]) === JSON.stringify(yelWin)) {
+          alert('Player Yellow is the Winner!');
+          this.setState({announcement: 'Player Yellow is the Winner! Click "New Game" to play again!'})
+        }
+      }
+    } 
+  }
+
 
   updateBoard(row, column, board) {
     var newBoard = board.slice();
@@ -108,6 +173,7 @@ class Board extends Component {
     this.detectTie();
     this.detectHorizontalWin();
     this.detectVerticalWin();
+    this.detectDiagonalWinFromTopRight();
   }
 
   resetBoard() {
