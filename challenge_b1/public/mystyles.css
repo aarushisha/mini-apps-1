@@ -1,0 +1,20 @@
+.board {
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px 50px 50px 50px 50px;
+  border: 1px solid black;
+  width: 400px;
+}
+
+.red, .black {
+  height: 50px;
+  width: 50px;
+  border: 1px solid black;
+}
+
+.red {
+  background-color: red;
+}
+
+.black {
+  background-color: black;
+}
