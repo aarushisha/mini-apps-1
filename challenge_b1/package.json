@@ -1,0 +1,22 @@
+{
+  "name": "challenge_b1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js localhost 3030"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.10",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.0.0"
+  }
+}
