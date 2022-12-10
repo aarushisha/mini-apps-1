@@ -12,7 +12,7 @@
   "dependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "nodemon": "^1.18.10",
     "path": "^0.12.7"
   },
